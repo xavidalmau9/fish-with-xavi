@@ -41,6 +41,20 @@
   .nav-links .btn{padding:10px 20px;font-size:15px}
   @media(max-width:820px){.nav-links a:not(.btn){display:none}}
 
+  /* ANNOUNCEMENT BAR */
+  .annbar{background:linear-gradient(90deg,#fb8500,#ffb703);color:#3a2400;text-align:center;font-weight:800;font-size:14.5px;padding:9px 16px;letter-spacing:.2px}
+  .annbar a{color:#3a2400;text-decoration:underline}
+  .annbar .pulse{display:inline-block;width:8px;height:8px;border-radius:50%;background:#d62828;margin-right:7px;vertical-align:middle;animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* SOLD OUT calendar states */
+  .day.soldout{background:#fbeaea;border-color:#f3c6c6;color:#c0392b;cursor:not-allowed;position:relative;font-size:11px;font-weight:800}
+  .day.soldout small{display:block;font-size:8px;letter-spacing:.3px;line-height:1}
+  .day.partial{position:relative}
+  .day.partial:after{content:"";position:absolute;top:4px;right:4px;width:6px;height:6px;border-radius:50%;background:var(--amber,#fb8500)}
+  .seg .opt.sold{opacity:.45;cursor:not-allowed;border-style:dashed;background:#fbeaea;border-color:#f3c6c6;color:#c0392b}
+  .soldout-badge{display:inline-block;background:#fbeaea;color:#c0392b;border:1px solid #f3c6c6;border-radius:20px;font-size:12px;font-weight:800;padding:3px 12px;margin-top:8px}
+
   /* HERO */
   .hero{position:relative;background:linear-gradient(135deg,#023047 0%,#035e7b 55%,#2ec4d6 130%);color:#fff;overflow:hidden}
   .hero:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20 Q10 10 20 20 T40 20' stroke='%23ffffff' stroke-opacity='.05' fill='none' stroke-width='2'/%3E%3C/svg%3E");opacity:.6}
@@ -178,6 +192,9 @@
 </head>
 <body>
 
+<!-- ANNOUNCEMENT -->
+<div class="annbar"><span class="pulse"></span>🔥 SUMMER 2026 OPENINGS NOW AVAILABLE — spots are filling fast. <a href="#book">Grab a date →</a></div>
+
 <!-- NAV -->
 <nav>
   <div class="nav-in">
@@ -198,16 +215,16 @@
 <header class="hero" id="top">
   <div class="wrap hero-in">
     <div>
-      <div class="eyebrow" style="color:var(--sun)">Miami-Dade County · 7 Days a Week</div>
-      <h1>Screen-Free Summer Mornings on <span>Miami's Canals</span></h1>
-      <p>Land-based urban fishing adventures for kids — guided by Xavi. Drop them off, we hook into hard-fighting peacock bass, snook & more. No boat, no stress, all the fun.</p>
+      <div class="eyebrow" style="color:var(--sun)">Summer 2026 · Now Booking · Miami-Dade · 7 Days a Week</div>
+      <h1>School's Out. Get the Kids <span>Off the Couch</span> and Onto the Water.</h1>
+      <p>Stuck-at-home summer? Trade the screens for a fishing rod. Drop the kids with Xavi for a land-based urban fishing adventure — they'll learn to really fish and reel in hard-fighting peacock bass, snook & more, right here in Miami. No boat, no stress, all the fun.</p>
       <div class="hero-cta">
         <a href="#book" class="btn">Book a Trip</a>
         <a href="https://www.instagram.com/xavi__dalmau/" target="_blank" rel="noopener" class="btn ghost">📸 See Xavi's Catches</a>
       </div>
       <div class="hero-trust">
         <span>🎣 <b>From $100</b> / morning or afternoon</span>
-        <span>👦 <b>Ages 6+</b> · up to 4 kids</span>
+        <span>👦 <b>Ages 6+</b> · under 13 with an adult</span>
         <span>📍 Meet at <b>Kendall Bait &amp; Tackle</b></span>
       </div>
     </div>
@@ -356,7 +373,7 @@
         </div>
         <div class="cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
         <div class="cal-days" id="calDays"></div>
-        <p class="req-note">🟧 Selected date &nbsp;·&nbsp; 🔵 Today &nbsp;·&nbsp; All days available to start.</p>
+        <p class="req-note">🟧 Selected &nbsp;·&nbsp; 🔵 Today &nbsp;·&nbsp; <span style="color:#c0392b;font-weight:700">SOLD</span> = fully booked &nbsp;·&nbsp; 🟠 dot = one session booked. Book early — summer 2026 is filling up!</p>
       </div>
 
       <div class="book-form">
@@ -377,6 +394,7 @@
 
         <label>Kids' ages (helps us plan)</label>
         <input type="text" id="fAges" placeholder="e.g. 8 and 10">
+        <p class="req-note" style="margin-top:6px">👨‍👧 Kids under 13 must be accompanied by an adult.</p>
 
         <label>Bait preference?</label>
         <div class="seg" id="segBait">
@@ -435,7 +453,7 @@
 
     <details><summary>Are there really alligators and crocodiles?</summary><div class="body">Yes — Miami's canals can hold American alligators, and brackish coastal systems can hold crocodiles, plus snakes and other wildlife. This is exactly why we're <b>100% land-based</b>, keep kids back from the water's edge, scout every spot in advance, and require a signed waiver. Respecting the wildlife is part of what the kids learn.</div></details>
 
-    <details><summary>What ages do you take? Do kids need a fishing license?</summary><div class="body">We take kids roughly <b>ages 6 and up</b> (younger with a parent along — just ask). In Florida, <b>children under 16 do not need a fishing license</b>, so sign-up is simple.</div></details>
+    <details><summary>What ages do you take? Do kids need a fishing license?</summary><div class="body">We take kids roughly <b>ages 6 and up</b>. <b>Children under 13 must be accompanied by an adult</b> for the session (a parent or guardian stays with the group). Kids 13 and older can be dropped off. In Florida, <b>children under 16 do not need a fishing license</b>, so sign-up is simple.</div></details>
 
     <details><summary>What's included? What should my kid bring?</summary><div class="body">We provide all rods, reels, tackle, and instruction. You bring: a hat, sunscreen, closed-toe shoes, a refillable water bottle, and a sense of adventure. Live bait is added at $20/child, or skip it and fish artificial lures for no bait fee.</div></details>
 
@@ -507,7 +525,7 @@
   function wireSeg(id,cb){
     var el=document.getElementById(id);
     el.querySelectorAll('.opt').forEach(function(o){
-      o.onclick=function(){ el.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')}); o.classList.add('on'); cb&&cb(); };
+      o.onclick=function(){ if(o.classList.contains('sold'))return; el.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')}); o.classList.add('on'); cb&&cb(); };
     });
   }
   function segVal(id){ return document.querySelector('#'+id+' .opt.on').dataset.v; }
@@ -517,6 +535,29 @@
   var TODAY={y:2026,m:5,d:1}; // June 1 2026 (month index 5)
   var view={y:2026,m:5};
   var selected=null;
+
+  // Sold-out dates. 'all' = whole day booked; array = specific sessions booked.
+  // Month is 0-indexed (June=5, July=6).
+  var SOLD_OUT = {
+    '2026-5-13':'all',            // June 13
+    '2026-5-14':'all',            // June 14
+    '2026-5-18':['Afternoon'],    // June 18 — afternoon booked
+    '2026-5-23':['Morning'],      // June 23 — morning booked
+    '2026-5-28':'all',            // June 28
+    '2026-6-4':'all',             // July 4
+    '2026-6-5':'all',             // July 5
+    '2026-6-14':['Morning']       // July 14 — morning booked
+  };
+  function soldStatus(y,m,d){ return SOLD_OUT[y+'-'+m+'-'+d]||null; }
+  function isSessionSold(status,session){
+    if(!status) return false;
+    if(status==='all') return true;
+    if(status.indexOf(session)>-1) return true;
+    // Full Day spans both morning & afternoon — sold if either half is taken
+    if(session==='Full Day' && (status.indexOf('Morning')>-1 || status.indexOf('Afternoon')>-1)) return true;
+    return false;
+  }
+
   function buildCal(){
     var first=new Date(view.y,view.m,1).getDay();
     var dim=new Date(view.y,view.m+1,0).getDate();
@@ -527,15 +568,36 @@
       var past = (view.y<TODAY.y)||(view.y===TODAY.y&&view.m<TODAY.m)||(view.y===TODAY.y&&view.m===TODAY.m&&d<TODAY.d);
       var isToday = view.y===TODAY.y&&view.m===TODAY.m&&d===TODAY.d;
       var isSel = selected&&selected.y===view.y&&selected.m===view.m&&selected.d===d;
-      var cls='day'+(past?' dis':'')+(isToday?' today':'')+(isSel?' sel':'');
-      c.innerHTML+='<div class="'+cls+'" data-d="'+d+'">'+d+'</div>';
+      var status = soldStatus(view.y,view.m,d);
+      if(!past && status==='all'){
+        c.innerHTML+='<div class="day soldout" data-d="'+d+'">'+d+'<small>SOLD</small></div>';
+      } else {
+        var cls='day'+(past?' dis':'')+(isToday?' today':'')+(isSel?' sel':'')+((!past&&status)?' partial':'');
+        c.innerHTML+='<div class="'+cls+'" data-d="'+d+'">'+d+'</div>';
+      }
     }
-    c.querySelectorAll('.day:not(.dis)').forEach(function(el){
-      el.onclick=function(){ selected={y:view.y,m:view.m,d:+el.dataset.d}; buildCal(); updateSummary(); };
+    c.querySelectorAll('.day:not(.dis):not(.soldout)').forEach(function(el){
+      el.onclick=function(){ selected={y:view.y,m:view.m,d:+el.dataset.d}; buildCal(); refreshSessionAvail(); updateSummary(); };
     });
   }
   document.getElementById('prevM').onclick=function(){ view.m--; if(view.m<0){view.m=11;view.y--;} buildCal(); };
   document.getElementById('nextM').onclick=function(){ view.m++; if(view.m>11){view.m=0;view.y++;} buildCal(); };
+
+  // Disable session buttons that are sold for the chosen date; auto-switch off a sold one.
+  function refreshSessionAvail(){
+    var status = selected? soldStatus(selected.y,selected.m,selected.d) : null;
+    var opts = document.querySelectorAll('#segSession .opt');
+    var current = document.querySelector('#segSession .opt.on');
+    opts.forEach(function(o){
+      if(isSessionSold(status,o.dataset.v)){ o.classList.add('sold'); }
+      else { o.classList.remove('sold'); }
+    });
+    if(current && current.classList.contains('sold')){
+      var avail = [].filter.call(opts,function(o){return !o.classList.contains('sold');})[0];
+      opts.forEach(function(x){x.classList.remove('on')});
+      if(avail) avail.classList.add('on');
+    }
+  }
 
   // ---- SUMMARY + REQUEST ----
   var PHONE='3054093399'; // Xavi's number
@@ -548,13 +610,18 @@
     var session=segVal('segSession'), kids=+segVal('segKids'), bait=segVal('segBait');
     var base=priceFor(session,kids);
     var baitNote = bait==='yes'? 'live shiners bought at the shop (~$15–20/dozen)' : 'artificial lures (no bait needed)';
+    var status = selected? soldStatus(selected.y,selected.m,selected.d) : null;
+    var soldNote = '';
+    if(status && status!=='all'){
+      soldNote = '<div class="soldout-badge">⛔ '+status.join(' & ')+' booked this day — other sessions still open</div>';
+    }
     var s=document.getElementById('summary');
     s.innerHTML='<b>'+fmtDate(selected)+'</b> · '+session+' · '+kids+' kid'+(kids>1?'s':'')+'<br>'+
       'Session fee: <b>$'+base+'</b> &nbsp;·&nbsp; '+baitNote+
-      '<br><small style="color:var(--muted)">+ travel if Keys/out-of-county. Live bait paid at meetup.</small>';
+      '<br><small style="color:var(--muted)">+ travel if Keys/out-of-county. Live bait paid at meetup.</small>'+soldNote;
   }
   wireSeg('segSession',updateSummary); wireSeg('segKids',updateSummary); wireSeg('segBait',updateSummary);
-  buildCal(); updateSummary();
+  buildCal(); refreshSessionAvail(); updateSummary();
 
   document.getElementById('reqBtn').onclick=function(e){
     e.preventDefault();
