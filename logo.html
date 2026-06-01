@@ -14,33 +14,94 @@
 <div class="stage">
 <svg width="700" height="700" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <clipPath id="photoClip"><circle cx="350" cy="350" r="196"/></clipPath>
-    <filter id="toon" x="-5%" y="-5%" width="110%" height="110%">
-      <feColorMatrix type="saturate" values="1.55"/>
-      <feComponentTransfer>
-        <feFuncR type="discrete" tableValues="0 0.20 0.42 0.62 0.80 1"/>
-        <feFuncG type="discrete" tableValues="0 0.20 0.42 0.62 0.80 1"/>
-        <feFuncB type="discrete" tableValues="0 0.20 0.42 0.62 0.80 1"/>
-      </feComponentTransfer>
-    </filter>
-    <radialGradient id="sky" cx="50%" cy="30%" r="80%">
-      <stop offset="0%" stop-color="#2ec4d6"/>
-      <stop offset="100%" stop-color="#035e7b"/>
+    <clipPath id="scene"><circle cx="350" cy="350" r="196"/></clipPath>
+    <radialGradient id="sky" cx="50%" cy="28%" r="85%">
+      <stop offset="0%" stop-color="#cdeefb"/><stop offset="100%" stop-color="#7fd0ee"/>
     </radialGradient>
-    <!-- text arcs (radius 240, centered at 350,350) -->
+    <linearGradient id="bodyG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4e35c"/><stop offset="55%" stop-color="#ebb53d"/><stop offset="100%" stop-color="#f0a62c"/>
+    </linearGradient>
     <path id="arcTop" d="M 110,350 A 240,240 0 0 1 590,350" fill="none"/>
     <path id="arcBot" d="M 590,350 A 240,240 0 0 1 110,350" fill="none"/>
   </defs>
 
-  <!-- Outer navy disc, centered with even padding -->
+  <!-- Outer badge -->
   <circle cx="350" cy="350" r="312" fill="#023047"/>
   <circle cx="350" cy="350" r="300" fill="none" stroke="#ffb703" stroke-width="6"/>
   <circle cx="350" cy="350" r="214" fill="none" stroke="#ffb703" stroke-width="4"/>
 
-  <!-- Photo -->
-  <circle cx="350" cy="350" r="200" fill="url(#sky)"/>
-  <image href="images/peacock.jpg" x="150" y="148" width="400" height="404"
-         preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)" filter="url(#toon)"/>
+  <!-- ===== CARTOON SCENE ===== -->
+  <g clip-path="url(#scene)">
+    <rect x="150" y="150" width="400" height="400" fill="url(#sky)"/>
+    <circle cx="478" cy="228" r="26" fill="#ffd24d"/>
+    <!-- water -->
+    <path d="M150,470 q46,-22 92,0 t92,0 t92,0 t92,0 l0,90 l-380,0 z" fill="#1f93b5"/>
+    <path d="M150,470 q46,-22 92,0 t92,0 t92,0 t92,0" fill="none" stroke="#8fe3f2" stroke-width="5"/>
+
+    <!-- shoulders / shirt -->
+    <path d="M270,548 C270,476 298,456 350,456 C402,456 430,476 430,548 Z" fill="#2ec4d6" stroke="#0d2a33" stroke-width="6"/>
+
+    <!-- neck -->
+    <rect x="333" y="386" width="34" height="56" rx="12" fill="#e6b88c"/>
+
+    <!-- head -->
+    <circle cx="350" cy="332" r="60" fill="#f1c9a5" stroke="#0d2a33" stroke-width="6"/>
+    <circle cx="290" cy="334" r="12" fill="#f1c9a5" stroke="#0d2a33" stroke-width="5"/>
+    <circle cx="410" cy="334" r="12" fill="#f1c9a5" stroke="#0d2a33" stroke-width="5"/>
+
+    <!-- cap crown -->
+    <path d="M291,312 a59,54 0 0 1 118,0 Z" fill="#0c2f45" stroke="#0d2a33" stroke-width="6"/>
+    <!-- cap brim -->
+    <path d="M284,312 q66,24 132,0 q5,15 -11,20 q-55,15 -110,0 q-16,-5 -11,-20 Z" fill="#08202f" stroke="#0d2a33" stroke-width="5"/>
+    <!-- cap patch -->
+    <ellipse cx="350" cy="289" rx="21" ry="15" fill="#ffd24d" stroke="#0d2a33" stroke-width="4"/>
+    <text x="350" y="296" font-size="18" font-weight="900" text-anchor="middle" fill="#0c2f45">X</text>
+
+    <!-- sunglasses -->
+    <rect x="304" y="324" width="38" height="23" rx="10" fill="#141414"/>
+    <rect x="358" y="324" width="38" height="23" rx="10" fill="#141414"/>
+    <rect x="340" y="330" width="20" height="7" rx="3" fill="#141414"/>
+    <rect x="311" y="329" width="11" height="6" rx="3" fill="#46484a"/>
+    <rect x="365" y="329" width="11" height="6" rx="3" fill="#46484a"/>
+
+    <!-- mustache -->
+    <path d="M324,362 q26,15 52,0 q-7,14 -26,14 q-19,0 -26,-14 Z" fill="#5a3b22"/>
+    <!-- smile -->
+    <path d="M333,380 q17,12 34,0" fill="none" stroke="#b5734f" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- ===== PEACOCK BASS (held up in front) ===== -->
+    <g transform="rotate(-10 350 478)">
+      <!-- tail -->
+      <path d="M214,478 l-46,-36 l0,72 Z" fill="#fb8500" stroke="#0d2a33" stroke-width="6"/>
+      <circle cx="200" cy="478" r="13" fill="#0c2f45"/>
+      <circle cx="200" cy="478" r="13" fill="none" stroke="#ffd24d" stroke-width="5"/>
+      <!-- dorsal fin -->
+      <path d="M300,432 q62,-26 122,-2 q-30,12 -61,10 q-33,2 -61,-8 Z" fill="#ef8f28" stroke="#0d2a33" stroke-width="4"/>
+      <!-- body -->
+      <path d="M216,478 C262,428 432,428 482,478 C432,528 262,528 216,478 Z" fill="url(#bodyG)" stroke="#0d2a33" stroke-width="7"/>
+      <!-- vertical bars -->
+      <path d="M300,442 q9,36 0,72" stroke="#2f6b3c" stroke-width="13" fill="none" opacity=".5" stroke-linecap="round"/>
+      <path d="M346,438 q9,40 0,80" stroke="#2f6b3c" stroke-width="13" fill="none" opacity=".5" stroke-linecap="round"/>
+      <path d="M392,442 q9,36 0,72" stroke="#2f6b3c" stroke-width="13" fill="none" opacity=".5" stroke-linecap="round"/>
+      <!-- belly fin -->
+      <path d="M334,520 q30,16 60,2 q-14,18 -32,16 q-18,0 -28,-18 Z" fill="#fb8500" stroke="#0d2a33" stroke-width="4"/>
+      <!-- fish head -->
+      <path d="M482,478 q-4,-32 -36,-42 q15,42 0,84 q32,-10 36,-42 Z" fill="#e6852a" stroke="#0d2a33" stroke-width="6"/>
+      <!-- gill line -->
+      <path d="M452,442 q-12,36 0,72" fill="none" stroke="#0d2a33" stroke-width="3" opacity=".5"/>
+      <!-- eye -->
+      <circle cx="456" cy="462" r="12" fill="#fff" stroke="#0d2a33" stroke-width="3"/>
+      <circle cx="456" cy="462" r="9" fill="none" stroke="#e23b2e" stroke-width="3"/>
+      <circle cx="456" cy="462" r="5" fill="#111"/>
+      <!-- mouth -->
+      <path d="M480,492 q12,3 16,11" fill="none" stroke="#0d2a33" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <!-- hands -->
+    <ellipse cx="246" cy="500" rx="21" ry="15" fill="#f1c9a5" stroke="#0d2a33" stroke-width="6" transform="rotate(-10 350 478)"/>
+    <ellipse cx="452" cy="508" rx="21" ry="15" fill="#f1c9a5" stroke="#0d2a33" stroke-width="6" transform="rotate(-10 350 478)"/>
+  </g>
+  <!-- inner ring over scene edge -->
   <circle cx="350" cy="350" r="198" fill="none" stroke="#fb8500" stroke-width="9"/>
 
   <!-- Curved text -->
