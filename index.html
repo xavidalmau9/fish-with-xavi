@@ -58,7 +58,7 @@
   /* HERO */
   .hero{position:relative;background:linear-gradient(135deg,#023047 0%,#035e7b 55%,#2ec4d6 130%);color:#fff;overflow:hidden}
   .hero:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20 Q10 10 20 20 T40 20' stroke='%23ffffff' stroke-opacity='.05' fill='none' stroke-width='2'/%3E%3C/svg%3E");opacity:.6}
-  .hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:78px 0 86px}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:78px 22px 86px}
   .hero h1{font-size:54px;line-height:1.05;margin-bottom:18px;letter-spacing:-.5px}
   .hero h1 span{color:var(--sun)}
   .hero p{font-size:19px;opacity:.94;max-width:520px;margin-bottom:28px}
@@ -70,7 +70,7 @@
   .fishrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:15px}
   .fishrow:last-child{border:none}
   .fishrow .em{font-size:24px}
-  @media(max-width:880px){.hero-in{grid-template-columns:1fr;padding:52px 0 60px}.hero h1{font-size:40px}}
+  @media(max-width:880px){.hero-in{grid-template-columns:1fr;padding:52px 22px 60px}.hero h1{font-size:40px}}
   .hero-photo{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35);border:3px solid rgba(255,255,255,.25)}
   .hero-photo img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover}
   .hero-photo-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(2,48,71,.92));color:#fff;font-size:14px;font-weight:600;padding:30px 18px 14px}
@@ -188,6 +188,56 @@
   footer a:hover{color:var(--sun)}
   .foot-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;font-size:13px;opacity:.7;text-align:center}
   .disc{font-size:12px;opacity:.6;max-width:760px;margin:14px auto 0;text-align:center;line-height:1.5}
+
+  /* FIRST CAST intro block */
+  .firstcast{max-width:760px;margin:40px auto 0;text-align:center}
+  .firstcast p{font-size:18px;color:var(--ink);margin-bottom:14px}
+  .firstcast p:last-child{margin-bottom:0}
+
+  /* ---- RESPONSIVE / MOBILE ---- */
+  @media(max-width:880px){
+    section{padding:54px 0}
+    h2{font-size:30px}
+    .lead{font-size:17px;margin-bottom:26px}
+    .firstcast{margin-top:32px}
+    .firstcast p{font-size:17px}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 18px}
+    section{padding:40px 0}
+    h2{font-size:25px}
+    .lead{font-size:15.5px;margin-bottom:20px}
+    .eyebrow{font-size:12px;letter-spacing:1.5px}
+    .hero-in{padding:36px 18px 44px;gap:26px}
+    .hero h1{font-size:33px}
+    .hero p{font-size:16.5px;margin-bottom:22px}
+    .hero-cta{gap:10px;margin-bottom:20px}
+    .hero-trust{gap:8px 18px;font-size:13px}
+    .annbar{font-size:12.5px;padding:8px 14px}
+    .strip{padding:16px 0}
+    .strip-in{gap:10px}
+    .strip .num{font-size:22px}
+    .card{padding:20px}
+    .card .ic{font-size:30px}
+    .firstcast{margin-top:26px}
+    .firstcast p{font-size:16px}
+    .session-tabs{gap:8px;margin-bottom:20px}
+    .stab{padding:9px 14px;font-size:13.5px}
+    .price-grid{gap:11px;margin-bottom:14px}
+    .ptile{padding:18px 12px}
+    .ptile .amt{font-size:32px}
+    .price-note{padding:15px 16px;font-size:14px}
+    .species-tags{gap:9px}
+    .sp{padding:9px 14px;font-size:14px}
+    .steps{gap:8px}
+    .gallery{gap:10px}
+    .safe-grid{gap:14px}
+    .book-grid{gap:24px}
+    .btn{padding:13px 22px;font-size:15px}
+    details summary{padding:15px 16px;font-size:15px}
+    .cal{padding:16px}
+    .day{font-size:14px}
+  }
 </style>
 </head>
 <body>
@@ -254,11 +304,11 @@
       <div class="card"><div class="ic">🌴</div><h3>Pure Miami</h3><p>Neon peacock bass straight from a local canal bank. The most colorful, beginner-friendly fishing in the country is right in our backyard.</p></div>
     </div>
 
-    <div style="max-width:760px;margin:40px auto 0;text-align:center">
+    <div class="firstcast">
       <div class="eyebrow" style="justify-content:center">A Hobby for Life</div>
       <h2 style="margin-bottom:14px">The Perfect First Cast</h2>
-      <p style="font-size:18px;color:var(--ink);margin-bottom:14px">There's no easier — or cheaper — way to introduce your kid to fishing. <b>No boat, no charter fees, no crazy gear list.</b> Just a rod, a Miami canal, and a guide who makes it fun from the very first cast. It's the ideal way to find out if your child loves the water without spending a fortune to do it.</p>
-      <p style="font-size:18px;color:var(--ink)">And it's genuinely good for them. Fishing gets kids <b>off the couch and away from the video games</b>, out in the fresh air, learning patience, focus, and respect for nature. It's calm, screen-free, and rewarding in a way a controller never will be — and unlike most summer activities, it's something they can carry and enjoy <b>for the rest of their lives.</b> Hook them young, and you've given them a hobby that lasts forever.</p>
+      <p>There's no easier — or cheaper — way to introduce your kid to fishing. <b>No boat, no charter fees, no crazy gear list.</b> Just a rod, a Miami canal, and a guide who makes it fun from the very first cast. It's the ideal way to find out if your child loves the water without spending a fortune to do it.</p>
+      <p>And it's genuinely good for them. Fishing gets kids <b>off the couch and away from the video games</b>, out in the fresh air, learning patience, focus, and respect for nature. It's calm, screen-free, and rewarding in a way a controller never will be — and unlike most summer activities, it's something they can carry and enjoy <b>for the rest of their lives.</b> Hook them young, and you've given them a hobby that lasts forever.</p>
     </div>
   </div>
 </section>
