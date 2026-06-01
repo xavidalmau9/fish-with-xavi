@@ -5,18 +5,16 @@
 <title>Fish with Xavi — Logo</title>
 <style>
   html,body{margin:0;padding:0;background:transparent}
-  .stage{width:640px;height:640px}
+  .stage{width:700px;height:700px}
   svg{display:block}
   text{font-family:'Arial Black','Arial',sans-serif}
 </style>
 </head>
 <body>
 <div class="stage">
-<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+<svg width="700" height="700" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <clipPath id="photoClip"><circle cx="320" cy="320" r="196"/></clipPath>
-
-    <!-- Cartoon / posterize filter -->
+    <clipPath id="photoClip"><circle cx="350" cy="350" r="196"/></clipPath>
     <filter id="toon" x="-5%" y="-5%" width="110%" height="110%">
       <feColorMatrix type="saturate" values="1.55"/>
       <feComponentTransfer>
@@ -25,43 +23,39 @@
         <feFuncB type="discrete" tableValues="0 0.20 0.42 0.62 0.80 1"/>
       </feComponentTransfer>
     </filter>
-
     <radialGradient id="sky" cx="50%" cy="30%" r="80%">
       <stop offset="0%" stop-color="#2ec4d6"/>
       <stop offset="100%" stop-color="#035e7b"/>
     </radialGradient>
-
-    <!-- text arcs (radius 248) -->
-    <path id="arcTop" d="M 72,320 A 248,248 0 0 1 568,320" fill="none"/>
-    <path id="arcBot" d="M 568,320 A 248,248 0 0 1 72,320" fill="none"/>
+    <!-- text arcs (radius 240, centered at 350,350) -->
+    <path id="arcTop" d="M 110,350 A 240,240 0 0 1 590,350" fill="none"/>
+    <path id="arcBot" d="M 590,350 A 240,240 0 0 1 110,350" fill="none"/>
   </defs>
 
-  <!-- Outer navy disc -->
-  <circle cx="320" cy="320" r="312" fill="#023047"/>
-  <!-- Sun accent rings -->
-  <circle cx="320" cy="320" r="300" fill="none" stroke="#ffb703" stroke-width="6"/>
-  <circle cx="320" cy="320" r="214" fill="none" stroke="#ffb703" stroke-width="4"/>
+  <!-- Outer navy disc, centered with even padding -->
+  <circle cx="350" cy="350" r="312" fill="#023047"/>
+  <circle cx="350" cy="350" r="300" fill="none" stroke="#ffb703" stroke-width="6"/>
+  <circle cx="350" cy="350" r="214" fill="none" stroke="#ffb703" stroke-width="4"/>
 
-  <!-- Photo background + photo -->
-  <circle cx="320" cy="320" r="200" fill="url(#sky)"/>
-  <image href="images/peacock.jpg" x="120" y="118" width="400" height="404"
+  <!-- Photo -->
+  <circle cx="350" cy="350" r="200" fill="url(#sky)"/>
+  <image href="images/peacock.jpg" x="150" y="148" width="400" height="404"
          preserveAspectRatio="xMidYMid slice" clip-path="url(#photoClip)" filter="url(#toon)"/>
-  <!-- inner bevel ring on photo -->
-  <circle cx="320" cy="320" r="198" fill="none" stroke="#fb8500" stroke-width="9"/>
+  <circle cx="350" cy="350" r="198" fill="none" stroke="#fb8500" stroke-width="9"/>
 
   <!-- Curved text -->
-  <text font-size="62" font-weight="900" fill="#ffffff" letter-spacing="2">
+  <text font-size="60" font-weight="900" fill="#ffffff" letter-spacing="2">
     <textPath href="#arcTop" startOffset="50%" text-anchor="middle">FISH WITH XAVI</textPath>
   </text>
-  <text font-size="33" font-weight="700" fill="#ffb703" letter-spacing="3">
+  <text font-size="32" font-weight="700" fill="#ffb703" letter-spacing="3">
     <textPath href="#arcBot" startOffset="50%" text-anchor="middle">MIAMI · FISHWITHXAVI.COM</textPath>
   </text>
 
-  <!-- little fish separators at the sides -->
-  <g fill="#ffb703" transform="translate(40,320)">
+  <!-- side fish accents -->
+  <g fill="#ffb703" transform="translate(70,350)">
     <path d="M0,0 q12,-12 28,0 q-12,12 -28,0 z M28,-2 l10,-8 l0,20 l-10,-10 z"/>
   </g>
-  <g fill="#ffb703" transform="translate(600,320) scale(-1,1)">
+  <g fill="#ffb703" transform="translate(630,350) scale(-1,1)">
     <path d="M0,0 q12,-12 28,0 q-12,12 -28,0 z M28,-2 l10,-8 l0,20 l-10,-10 z"/>
   </g>
 </svg>
