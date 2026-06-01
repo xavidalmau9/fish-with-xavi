@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fish with Xavi — Miami's Youth Urban Fishing Adventures</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23035e7b'/%3E%3Ctext x='50' y='70' font-size='58' text-anchor='middle' fill='%23ffd166' font-family='Arial' font-weight='bold'%3EX%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --deep:#023047; --teal:#035e7b; --aqua:#2ec4d6; --sun:#ffb703; --orange:#fb8500;
+    --sand:#fef9ef; --ink:#0b2027; --muted:#5b7280; --green:#2a9d8f; --line:#dce6ea;
+    --shadow:0 14px 40px rgba(2,48,71,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--sand);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:14px 26px;border-radius:40px;text-decoration:none;border:none;cursor:pointer;font-size:16px;transition:transform .15s,box-shadow .15s;box-shadow:0 8px 20px rgba(251,133,0,.35)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(251,133,0,.45)}
+  .btn.alt{background:#fff;color:var(--teal);box-shadow:0 8px 20px rgba(2,48,71,.12)}
+  .btn.ghost{background:transparent;border:2px solid #fff;box-shadow:none}
+  section{padding:74px 0}
+  h2{font-size:34px;line-height:1.15;margin-bottom:10px;color:var(--deep)}
+  .lead{color:var(--muted);font-size:18px;max-width:680px;margin-bottom:34px}
+  .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:800;color:var(--orange);margin-bottom:10px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(254,249,239,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 22px;max-width:1140px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--deep);text-decoration:none}
+  .logo .badge{width:38px;height:38px;border-radius:11px;background:var(--teal);color:var(--sun);display:grid;place-items:center;font-size:22px;font-weight:900}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:600;color:var(--ink);font-size:15px}
+  .nav-links a:hover{color:var(--orange)}
+  .nav-links .btn{padding:10px 20px;font-size:15px}
+  @media(max-width:820px){.nav-links a:not(.btn){display:none}}
+
+  /* HERO */
+  .hero{position:relative;background:linear-gradient(135deg,#023047 0%,#035e7b 55%,#2ec4d6 130%);color:#fff;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M0 20 Q10 10 20 20 T40 20' stroke='%23ffffff' stroke-opacity='.05' fill='none' stroke-width='2'/%3E%3C/svg%3E");opacity:.6}
+  .hero-in{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:78px 0 86px}
+  .hero h1{font-size:54px;line-height:1.05;margin-bottom:18px;letter-spacing:-.5px}
+  .hero h1 span{color:var(--sun)}
+  .hero p{font-size:19px;opacity:.94;max-width:520px;margin-bottom:28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .hero-trust{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;opacity:.9}
+  .hero-trust b{color:var(--sun)}
+  .hero-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:26px;backdrop-filter:blur(6px)}
+  .hero-card h3{font-size:15px;text-transform:uppercase;letter-spacing:1.5px;color:var(--sun);margin-bottom:16px}
+  .fishrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:15px}
+  .fishrow:last-child{border:none}
+  .fishrow .em{font-size:24px}
+  @media(max-width:880px){.hero-in{grid-template-columns:1fr;padding:52px 0 60px}.hero h1{font-size:40px}}
+
+  /* PILLS strip */
+  .strip{background:var(--deep);color:#fff;padding:20px 0}
+  .strip-in{display:flex;justify-content:space-around;gap:18px;flex-wrap:wrap;text-align:center}
+  .strip .num{font-size:26px;font-weight:900;color:var(--sun)}
+  .strip .lbl{font-size:13px;opacity:.85;text-transform:uppercase;letter-spacing:1px}
+
+  /* CARDS generic */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:820px){.grid3,.grid2{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
+  .card .ic{font-size:34px;margin-bottom:12px}
+  .card h3{font-size:20px;color:var(--deep);margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* PRICING */
+  #pricing{background:#fff}
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:18px}
+  @media(max-width:880px){.price-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.price-grid{grid-template-columns:1fr}}
+  .ptile{border:2px solid var(--line);border-radius:18px;padding:24px 20px;text-align:center;position:relative;transition:border-color .15s,transform .15s}
+  .ptile:hover{border-color:var(--aqua);transform:translateY(-3px)}
+  .ptile.pop{border-color:var(--orange)}
+  .ptile .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:11px;font-weight:800;padding:4px 12px;border-radius:20px;letter-spacing:.5px}
+  .ptile .kids{font-size:15px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1px}
+  .ptile .amt{font-size:40px;font-weight:900;color:var(--deep);margin:6px 0 2px}
+  .ptile .per{font-size:13px;color:var(--muted)}
+  .price-note{background:var(--sand);border:1px dashed var(--aqua);border-radius:14px;padding:18px 22px;font-size:15px;color:var(--ink)}
+  .price-note b{color:var(--teal)}
+  .session-tabs{display:flex;gap:10px;justify-content:center;margin-bottom:26px;flex-wrap:wrap}
+  .stab{padding:10px 22px;border-radius:30px;border:2px solid var(--line);background:#fff;cursor:pointer;font-weight:700;color:var(--muted);font-size:15px}
+  .stab.on{background:var(--teal);color:#fff;border-color:var(--teal)}
+
+  /* SPECIES */
+  .species-tags{display:flex;flex-wrap:wrap;gap:12px}
+  .sp{background:#fff;border:1px solid var(--line);border-radius:30px;padding:10px 18px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(2,48,71,.05)}
+  .sp .em{font-size:18px}
+
+  /* SAFETY */
+  #safety{background:linear-gradient(135deg,#023047,#035e7b);color:#fff}
+  #safety h2{color:#fff}
+  #safety .lead{color:rgba(255,255,255,.85)}
+  .safe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:820px){.safe-grid{grid-template-columns:1fr}}
+  .safe{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:22px}
+  .safe .ic{font-size:30px;margin-bottom:10px}
+  .safe h3{font-size:17px;margin-bottom:6px;color:var(--sun)}
+  .safe p{font-size:14px;opacity:.9}
+
+  /* HOW */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+  .step{position:relative;padding-top:14px}
+  .step .n{width:44px;height:44px;border-radius:50%;background:var(--orange);color:#fff;font-weight:900;display:grid;place-items:center;font-size:20px;margin-bottom:12px}
+  .step h3{font-size:18px;color:var(--deep);margin-bottom:6px}
+  .step p{color:var(--muted);font-size:15px}
+
+  /* BOOKING / CALENDAR */
+  #book{background:#fff}
+  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+  @media(max-width:880px){.book-grid{grid-template-columns:1fr}}
+  .cal{background:var(--sand);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+  .cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .cal-head button{background:var(--teal);color:#fff;border:none;width:38px;height:38px;border-radius:10px;font-size:18px;cursor:pointer}
+  .cal-head h3{font-size:18px;color:var(--deep)}
+  .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+  .cal-dow span{text-align:center;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase}
+  .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .day{aspect-ratio:1;display:grid;place-items:center;border-radius:10px;font-weight:600;font-size:15px;cursor:pointer;background:#fff;border:1px solid var(--line);transition:.12s}
+  .day:hover:not(.dis){background:var(--aqua);color:#fff;border-color:var(--aqua)}
+  .day.dis{opacity:.32;cursor:not-allowed;background:transparent;border:none}
+  .day.sel{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 6px 14px rgba(251,133,0,.4)}
+  .day.today{border-color:var(--aqua);border-width:2px}
+  .book-form label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px;color:var(--deep)}
+  .book-form input,.book-form select,.book-form textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:11px;font-size:15px;font-family:inherit;background:#fff}
+  .seg{display:flex;gap:8px;flex-wrap:wrap}
+  .seg .opt{flex:1;min-width:110px;text-align:center;padding:12px;border:2px solid var(--line);border-radius:11px;cursor:pointer;font-weight:700;font-size:14px;color:var(--muted)}
+  .seg .opt.on{border-color:var(--teal);background:var(--teal);color:#fff}
+  .seg .opt small{display:block;font-weight:500;font-size:12px;opacity:.85}
+  .summary{background:var(--sand);border:1px dashed var(--aqua);border-radius:12px;padding:14px 16px;margin-top:16px;font-size:15px}
+  .summary b{color:var(--teal)}
+  .req-note{font-size:13px;color:var(--muted);margin-top:10px}
+
+  /* WAIVER + FAQ */
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:12px;overflow:hidden}
+  details summary{padding:18px 20px;font-weight:700;cursor:pointer;color:var(--deep);list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details summary::-webkit-details-marker{display:none}
+  details summary:after{content:"+";font-size:24px;color:var(--orange);font-weight:400}
+  details[open] summary:after{content:"–"}
+  details .body{padding:0 20px 20px;color:var(--muted);font-size:15px}
+
+  /* INSTAGRAM */
+  .ig{background:linear-gradient(135deg,#fb8500,#ffb703);color:#fff;text-align:center}
+  .ig h2{color:#fff}
+  .ig p{color:rgba(255,255,255,.95);font-size:18px;max-width:600px;margin:0 auto 26px}
+
+  /* FOOTER */
+  footer{background:var(--deep);color:#fff;padding:50px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:30px}
+  @media(max-width:820px){.foot-grid{grid-template-columns:1fr}}
+  footer h4{color:var(--sun);font-size:15px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+  footer a{display:block;color:rgba(255,255,255,.85);text-decoration:none;margin-bottom:8px;font-size:15px}
+  footer a:hover{color:var(--sun)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;font-size:13px;opacity:.7;text-align:center}
+  .disc{font-size:12px;opacity:.6;max-width:760px;margin:14px auto 0;text-align:center;line-height:1.5}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="logo"><span class="badge">X</span> Fish with Xavi</a>
+    <div class="nav-links">
+      <a href="#story">Meet Xavi</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#species">Catch</a>
+      <a href="#safety">Safety</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book" class="btn">Book a Trip</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <div>
+      <div class="eyebrow" style="color:var(--sun)">Miami-Dade County · 7 Days a Week</div>
+      <h1>Screen-Free Summer Mornings on <span>Miami's Canals</span></h1>
+      <p>Land-based urban fishing adventures for kids — guided by Xavi. Drop them off, we hook into hard-fighting peacock bass, snook & more. No boat, no stress, all the fun.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn">Book a Trip</a>
+        <a href="https://www.instagram.com/xavi__dalmau/" target="_blank" rel="noopener" class="btn ghost">📸 See Xavi's Catches</a>
+      </div>
+      <div class="hero-trust">
+        <span>🎣 <b>From $100</b> / morning or afternoon</span>
+        <span>👦 <b>Ages 6+</b> · up to 4 kids</span>
+        <span>📍 Meet at <b>Kendall Bait &amp; Tackle</b></span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>🏆 The Urban Grand Slam</h3>
+      <div class="fishrow"><span class="em">🐟</span><div><b>Butterfly Peacock Bass</b><br><small style="opacity:.8">The colorful, aggressive headliner</small></div></div>
+      <div class="fishrow"><span class="em">🎣</span><div><b>Snook &amp; Tarpon</b><br><small style="opacity:.8">Hard-fighting canal bruisers</small></div></div>
+      <div class="fishrow"><span class="em">🌎</span><div><b>Oscars, Mayan Cichlids &amp; more</b><br><small style="opacity:.8">Invasive species hunting</small></div></div>
+      <div class="fishrow"><span class="em">🌊</span><div><b>Saltwater from bridges &amp; beaches</b><br><small style="opacity:.8">Snapper, jacks &amp; surprises</small></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <div><div class="num">100%</div><div class="lbl">Land-Based · No Boat</div></div>
+    <div><div class="num">4 hrs</div><div class="lbl">Half-Day Sessions</div></div>
+    <div><div class="num">4 max</div><div class="lbl">Kids Per Trip</div></div>
+    <div><div class="num">7 days</div><div class="lbl">Open All Week</div></div>
+  </div>
+</div>
+
+<!-- ABOUT / PARENT BREAK -->
+<section id="about">
+  <div class="wrap">
+    <div class="grid3">
+      <div class="card"><div class="ic">😌</div><h3>The Parent Break</h3><p>Drop the kids with Xavi and reclaim your morning. Screen-free, outdoors, and supervised — pick them up tired, happy, and full of fish stories.</p></div>
+      <div class="card"><div class="ic">🎣</div><h3>Real Skills, Real Fun</h3><p>Casting, knots, handling fish, and reading the water — kids leave with genuine fishing skills, not just a photo.</p></div>
+      <div class="card"><div class="ic">🌴</div><h3>Pure Miami</h3><p>Neon peacock bass straight from a local canal bank. The most colorful, beginner-friendly fishing in the country is right in our backyard.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET XAVI -->
+<section id="story" style="background:var(--sand)">
+  <div class="wrap">
+    <div class="grid2" style="align-items:center;gap:40px">
+      <div>
+        <div class="eyebrow">Meet Your Guide</div>
+        <h2>Hi, I'm Xavi Dalmau</h2>
+        <p style="font-size:17px;color:var(--ink);margin-bottom:16px">Born and raised right here in <b>Miami, Florida</b>, I've had a fishing rod in my hand since I was a little kid. There's no feeling like watching a peacock bass crush a bait on a quiet canal morning — and nothing better than seeing a kid catch their first one.</p>
+        <p style="font-size:17px;color:var(--ink);margin-bottom:16px">I attended <b>Gulliver Schools</b> my whole life, and I've spent years learning every canal, lake, and shoreline spot across Miami-Dade. Now I'm sharing that with the next generation of young anglers — teaching real skills, respect for the water and its wildlife, and the kind of screen-free fun this city is made for.</p>
+        <p style="font-size:17px;color:var(--ink);margin-bottom:22px">My catches speak for themselves — take a look at my feed.</p>
+        <a href="https://www.instagram.com/xavi__dalmau/" target="_blank" rel="noopener" class="btn alt">📸 See Xavi's Catches on Instagram →</a>
+      </div>
+      <div class="card" style="text-align:center;background:linear-gradient(135deg,#035e7b,#2ec4d6);color:#fff;border:none;padding:38px 28px">
+        <div style="font-size:64px;margin-bottom:8px">🎣</div>
+        <h3 style="color:#fff;font-size:22px;margin-bottom:6px">Xavi Dalmau</h3>
+        <p style="color:rgba(255,255,255,.92);font-size:15px;margin-bottom:18px">Miami native · Lifelong angler<br>Gulliver Schools</p>
+        <div style="display:flex;justify-content:center;gap:18px;font-size:14px;flex-wrap:wrap">
+          <div><div style="font-size:22px;font-weight:900;color:var(--sun)">100%</div><div style="opacity:.85">Local</div></div>
+          <div><div style="font-size:22px;font-weight:900;color:var(--sun)">Miami</div><div style="opacity:.85">Born &amp; Raised</div></div>
+          <div><div style="font-size:22px;font-weight:900;color:var(--sun)">Kid-First</div><div style="opacity:.85">Patient &amp; Safe</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Simple, Per-Trip Pricing</div>
+    <h2>Pricing</h2>
+    <p class="lead">Flat session fee — the more kids you bring, the lower the cost per child. Live bait is added on top at cost.</p>
+
+    <div class="session-tabs">
+      <div class="stab on" data-s="half">☀️ Morning (8a–12p) or Afternoon (1p–5p)</div>
+      <div class="stab" data-s="full">🌅 Full Day (9a–5p · lunch included)</div>
+    </div>
+
+    <div class="price-grid" id="priceGrid"></div>
+
+    <div class="price-note">
+      🪣 <b>Live bait is purchased by parents at meetup</b> — we meet at Kendall Bait &amp; Tackle, where you grab fresh live shiners (typically <b>$15–20 a dozen</b>). Prefer to skip it? <b>Artificial lures only = no bait needed</b> — great for older kids.<br>
+      🚗 <b>Keys &amp; out-of-county excursions</b> can be arranged — gas &amp; travel billed extra. So many species and spots, from freshwater canals to saltwater bridges and beaches. Just ask when you book.
+    </div>
+  </div>
+</section>
+
+<!-- SPECIES -->
+<section id="species">
+  <div class="wrap">
+    <div class="eyebrow">So Many Options</div>
+    <h2>What We Can Catch</h2>
+    <p class="lead">Miami's waters are stacked with species. We tailor the trip to what the kids want to target — freshwater canals, brackish systems, or saltwater from bridges and beaches.</p>
+    <div class="species-tags">
+      <div class="sp"><span class="em">🐟</span>Peacock Bass</div>
+      <div class="sp"><span class="em">🎣</span>Snook</div>
+      <div class="sp"><span class="em">💪</span>Tarpon</div>
+      <div class="sp"><span class="em">🌈</span>Oscars</div>
+      <div class="sp"><span class="em">🐠</span>Mayan Cichlids</div>
+      <div class="sp"><span class="em">🗡️</span>Clown Knifefish</div>
+      <div class="sp"><span class="em">🦈</span>Jack Crevalle</div>
+      <div class="sp"><span class="em">🐡</span>Snapper</div>
+      <div class="sp"><span class="em">🌊</span>Ladyfish</div>
+      <div class="sp"><span class="em">❓</span>...and Miami surprises</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:#fff">
+  <div class="wrap">
+    <div class="eyebrow">Easy &amp; Hassle-Free</div>
+    <h2>How Drop-Off Works</h2>
+    <p class="lead">Built around summer-camp time blocks so it slots right into your day.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Book Online</h3><p>Pick your date and session below. Open 7 days a week, mornings &amp; afternoons.</p></div>
+      <div class="step"><div class="n">2</div><h3>Meet at the Shop</h3><p>We meet at <b>Kendall Bait &amp; Tackle</b> to grab bait and gear, then head to the spot.</p></div>
+      <div class="step"><div class="n">3</div><h3>Fish with Xavi</h3><p>Casting, catching, and learning on safe, accessible canal banks. Gear provided.</p></div>
+      <div class="step"><div class="n">4</div><h3>Pick Up Happy</h3><p>Pick up your kids with photos of their catch and new skills to brag about.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAFETY -->
+<section id="safety">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--sun)">Safety First, Always</div>
+    <h2>How We Keep Kids Safe</h2>
+    <p class="lead">We fish near open water in a subtropical environment. We're upfront about the risks and manage them carefully — and a signed waiver is required before every trip.</p>
+    <div class="safe-grid">
+      <div class="safe"><div class="ic">⚡</div><h3>Weather Permitting</h3><p>Summer rain is normal and we fish right through it — the bite is often best in a light shower. We <b>only stop for lightning</b>, moving to safe cover immediately and resuming when it clears.</p></div>
+      <div class="safe"><div class="ic">🐊</div><h3>Wildlife Aware</h3><p>Miami canals can hold alligators, crocodiles, and snakes. Kids stay back from the water's edge at all times, and Xavi scouts and positions every spot for safety.</p></div>
+      <div class="safe"><div class="ic">🌊</div><h3>Water Smart</h3><p>Strictly land-based — no boats. Kids fish from stable banks within sight at all times. Life jackets available and required for non-swimmers near water.</p></div>
+      <div class="safe"><div class="ic">🥵</div><h3>Heat Managed</h3><p>Water, shade breaks, hats &amp; sunscreen built into every session. We watch every child for heat and hydration in the Miami sun.</p></div>
+      <div class="safe"><div class="ic">🎣</div><h3>Hook Handling</h3><p>Barbless or pinched-barb options for beginners, hands-on coaching on safe casting and fish handling, and a first-aid kit on hand.</p></div>
+      <div class="safe"><div class="ic">📝</div><h3>Signed Waiver</h3><p>Every parent e-signs our liability waiver and shares allergy, medical &amp; emergency-contact info before drop-off. <a href="waiver.html" style="color:var(--sun);text-decoration:underline">Read &amp; sign the waiver →</a></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+  <div class="wrap">
+    <div class="eyebrow">Reserve Your Spot</div>
+    <h2>Book a Trip</h2>
+    <p class="lead">Pick a date and session — we'll confirm by text. Open 7 days a week. Every trip is weather permitting (we only pause for lightning).</p>
+    <div class="book-grid">
+      <div class="cal">
+        <div class="cal-head">
+          <button id="prevM" aria-label="Previous month">‹</button>
+          <h3 id="calLabel">June 2026</h3>
+          <button id="nextM" aria-label="Next month">›</button>
+        </div>
+        <div class="cal-dow"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+        <div class="cal-days" id="calDays"></div>
+        <p class="req-note">🟧 Selected date &nbsp;·&nbsp; 🔵 Today &nbsp;·&nbsp; All days available to start.</p>
+      </div>
+
+      <div class="book-form">
+        <label>Session type</label>
+        <div class="seg" id="segSession">
+          <div class="opt on" data-v="Morning">Morning<small>8a–12p</small></div>
+          <div class="opt" data-v="Afternoon">Afternoon<small>1p–5p</small></div>
+          <div class="opt" data-v="Full Day">Full Day<small>9a–5p · lunch</small></div>
+        </div>
+
+        <label>How many kids?</label>
+        <div class="seg" id="segKids">
+          <div class="opt on" data-v="1">1</div>
+          <div class="opt" data-v="2">2</div>
+          <div class="opt" data-v="3">3</div>
+          <div class="opt" data-v="4">4</div>
+        </div>
+
+        <label>Kids' ages (helps us plan)</label>
+        <input type="text" id="fAges" placeholder="e.g. 8 and 10">
+
+        <label>Bait preference?</label>
+        <div class="seg" id="segBait">
+          <div class="opt on" data-v="yes">🪣 Live shiners (buy at shop)</div>
+          <div class="opt" data-v="no">🎣 Artificial only</div>
+        </div>
+
+        <label>Your name &amp; best phone</label>
+        <input type="text" id="fContact" placeholder="Name · (305) 555-1234">
+
+        <div class="summary" id="summary"></div>
+
+        <a href="#" class="btn" id="reqBtn" style="margin-top:16px;width:100%;text-align:center">📱 Request This Trip</a>
+        <p class="req-note">This opens a pre-filled text so we can confirm availability. Bait &amp; any Keys/travel add-ons are confirmed when we lock your date. A signed waiver is required before the trip.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig">
+  <div class="wrap">
+    <h2>📸 Xavi's Resume Is His Feed</h2>
+    <p>Don't take our word for it — Xavi's Instagram is a running highlight reel of his best Miami catches. See what your kid could be holding up next.</p>
+    <a href="https://www.instagram.com/xavi__dalmau/" target="_blank" rel="noopener" class="btn alt">Follow @xavi__dalmau →</a>
+  </div>
+</section>
+
+<!-- FAQ + WAIVER -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Good to Know</div>
+    <h2>FAQ &amp; Waiver</h2>
+    <p class="lead">The honest answers parents ask before booking.</p>
+
+    <details><summary>What if it rains?</summary><div class="body">Summer rain in Miami is almost daily and we fish right through it — the bite is often best in a passing shower. We <b>only stop for lightning</b>. If lightning is in the area we move to safe cover and resume once it clears. If a session is cut short by severe weather, we'll reschedule or credit the time.</div></details>
+
+    <details><summary>Are there really alligators and crocodiles?</summary><div class="body">Yes — Miami's canals can hold American alligators, and brackish coastal systems can hold crocodiles, plus snakes and other wildlife. This is exactly why we're <b>100% land-based</b>, keep kids back from the water's edge, scout every spot in advance, and require a signed waiver. Respecting the wildlife is part of what the kids learn.</div></details>
+
+    <details><summary>What ages do you take? Do kids need a fishing license?</summary><div class="body">We take kids roughly <b>ages 6 and up</b> (younger with a parent along — just ask). In Florida, <b>children under 16 do not need a fishing license</b>, so sign-up is simple.</div></details>
+
+    <details><summary>What's included? What should my kid bring?</summary><div class="body">We provide all rods, reels, tackle, and instruction. You bring: a hat, sunscreen, closed-toe shoes, a refillable water bottle, and a sense of adventure. Live bait is added at $20/child, or skip it and fish artificial lures for no bait fee.</div></details>
+
+    <details><summary>Where do we meet?</summary><div class="body">Trips start by meeting at <b>Kendall Bait &amp; Tackle</b> in Miami-Dade, where we grab bait and gear before heading to the day's spot. Exact meeting details are confirmed when you book.</div></details>
+
+    <details><summary>Can you go to the Keys or saltwater spots?</summary><div class="body">Absolutely. Beyond our local canals we can arrange excursions to the Keys and other areas, and fish saltwater from bridges and beaches — <b>gas and travel are billed extra</b>. Tell us what species your kid dreams of catching and we'll build the trip.</div></details>
+
+    <details><summary>📝 The Liability Waiver (read before booking)</summary><div class="body">
+      Every parent/guardian must e-sign our <b>Participation Agreement, Assumption of Risk &amp; Liability Release</b> before drop-off. It covers the specific risks of shoreline fishing — including <b>wildlife (alligators, crocodiles, snakes), open water &amp; drowning risk, fish hooks &amp; tackle, lightning &amp; weather, and heat</b> — and collects allergy, medical, emergency-contact, pickup-authorization and photo-release info. Signing is quick and done on your phone.<br><br>
+      <a href="waiver.html" class="btn" style="padding:10px 22px;font-size:15px">📝 Read &amp; Sign the Waiver →</a><br><br>
+      <em style="font-size:13px">This program is operated in Miami-Dade County, FL. Waiver enforceability is subject to Florida law.</em>
+    </div></details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="logo" style="color:#fff;margin-bottom:14px"><span class="badge">X</span> Fish with Xavi</a>
+        <p style="opacity:.8;font-size:15px;max-width:320px">Land-based youth fishing adventures across Miami-Dade County. Screen-free mornings, real skills, and the most colorful fish in America.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#pricing">Pricing</a>
+        <a href="#species">What We Catch</a>
+        <a href="#safety">Safety</a>
+        <a href="#book">Book a Trip</a>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <a href="https://www.instagram.com/xavi__dalmau/" target="_blank" rel="noopener">📸 @xavi__dalmau</a>
+        <a href="sms:3054093399">📱 Text: (305) 409-3399</a>
+        <a href="mailto:xavidalmau0@gmail.com">✉️ xavidalmau0@gmail.com</a>
+        <a href="waiver.html">📝 Liability Waiver</a>
+        <a href="#how">📍 Kendall Bait &amp; Tackle</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Fish with Xavi · Miami-Dade County, Florida · All trips weather permitting</div>
+    <p class="disc">Recreational fishing involves inherent risks including wildlife, open water, weather, and equipment. A signed liability waiver is required for all participants. Children under 16 do not require a Florida fishing license. Pricing and availability subject to confirmation.</p>
+  </div>
+</footer>
+
+<script>
+  // ---- PRICING DATA ----
+  var PRICES = {
+    half: [ {k:'1 Kid', amt:100, per:'$100 / child'}, {k:'2 Kids', amt:175, per:'$87.50 / child', pop:true}, {k:'3 Kids', amt:250, per:'$83.33 / child'}, {k:'4 Kids', amt:300, per:'$75 / child · max'} ],
+    full: [ {k:'1 Kid', amt:175, per:'$175 / child'}, {k:'2 Kids', amt:300, per:'$150 / child', pop:true}, {k:'3 Kids', amt:425, per:'$141 / child'}, {k:'4 Kids', amt:525, per:'$131 / child · max'} ]
+  };
+  function renderPrices(which){
+    var g=document.getElementById('priceGrid'); g.innerHTML='';
+    PRICES[which].forEach(function(p){
+      g.innerHTML += '<div class="ptile'+(p.pop?' pop':'')+'">'+(p.pop?'<span class="tag">BEST VALUE</span>':'')+
+        '<div class="kids">'+p.k+'</div><div class="amt">$'+p.amt+'</div><div class="per">'+p.per+'</div></div>';
+    });
+  }
+  renderPrices('half');
+  document.querySelectorAll('.stab').forEach(function(t){
+    t.onclick=function(){
+      document.querySelectorAll('.stab').forEach(function(x){x.classList.remove('on')});
+      t.classList.add('on'); renderPrices(t.dataset.s);
+    };
+  });
+
+  // ---- SEGMENT PICKERS ----
+  function wireSeg(id,cb){
+    var el=document.getElementById(id);
+    el.querySelectorAll('.opt').forEach(function(o){
+      o.onclick=function(){ el.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')}); o.classList.add('on'); cb&&cb(); };
+    });
+  }
+  function segVal(id){ return document.querySelector('#'+id+' .opt.on').dataset.v; }
+
+  // ---- CALENDAR ----
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var TODAY={y:2026,m:5,d:1}; // June 1 2026 (month index 5)
+  var view={y:2026,m:5};
+  var selected=null;
+  function buildCal(){
+    var first=new Date(view.y,view.m,1).getDay();
+    var dim=new Date(view.y,view.m+1,0).getDate();
+    document.getElementById('calLabel').textContent=MONTHS[view.m]+' '+view.y;
+    var c=document.getElementById('calDays'); c.innerHTML='';
+    for(var i=0;i<first;i++){ c.innerHTML+='<div class="day dis"></div>'; }
+    for(var d=1;d<=dim;d++){
+      var past = (view.y<TODAY.y)||(view.y===TODAY.y&&view.m<TODAY.m)||(view.y===TODAY.y&&view.m===TODAY.m&&d<TODAY.d);
+      var isToday = view.y===TODAY.y&&view.m===TODAY.m&&d===TODAY.d;
+      var isSel = selected&&selected.y===view.y&&selected.m===view.m&&selected.d===d;
+      var cls='day'+(past?' dis':'')+(isToday?' today':'')+(isSel?' sel':'');
+      c.innerHTML+='<div class="'+cls+'" data-d="'+d+'">'+d+'</div>';
+    }
+    c.querySelectorAll('.day:not(.dis)').forEach(function(el){
+      el.onclick=function(){ selected={y:view.y,m:view.m,d:+el.dataset.d}; buildCal(); updateSummary(); };
+    });
+  }
+  document.getElementById('prevM').onclick=function(){ view.m--; if(view.m<0){view.m=11;view.y--;} buildCal(); };
+  document.getElementById('nextM').onclick=function(){ view.m++; if(view.m>11){view.m=0;view.y++;} buildCal(); };
+
+  // ---- SUMMARY + REQUEST ----
+  var PHONE='3054093399'; // Xavi's number
+  function fmtDate(s){ return s? MONTHS[s.m]+' '+s.d+', '+s.y : '— pick a date above —'; }
+  function priceFor(session,kids){
+    var key = session==='Full Day'?'full':'half';
+    return PRICES[key][kids-1].amt;
+  }
+  function updateSummary(){
+    var session=segVal('segSession'), kids=+segVal('segKids'), bait=segVal('segBait');
+    var base=priceFor(session,kids);
+    var baitNote = bait==='yes'? 'live shiners bought at the shop (~$15–20/dozen)' : 'artificial lures (no bait needed)';
+    var s=document.getElementById('summary');
+    s.innerHTML='<b>'+fmtDate(selected)+'</b> · '+session+' · '+kids+' kid'+(kids>1?'s':'')+'<br>'+
+      'Session fee: <b>$'+base+'</b> &nbsp;·&nbsp; '+baitNote+
+      '<br><small style="color:var(--muted)">+ travel if Keys/out-of-county. Live bait paid at meetup.</small>';
+  }
+  wireSeg('segSession',updateSummary); wireSeg('segKids',updateSummary); wireSeg('segBait',updateSummary);
+  buildCal(); updateSummary();
+
+  document.getElementById('reqBtn').onclick=function(e){
+    e.preventDefault();
+    var session=segVal('segSession'), kids=segVal('segKids'), bait=segVal('segBait');
+    var ages=document.getElementById('fAges').value||'(not given)';
+    var contact=document.getElementById('fContact').value||'(name & phone)';
+    if(!selected){ alert('Please pick a date on the calendar first!'); document.getElementById('book').scrollIntoView(); return; }
+    var msg='Hi Xavi! I\'d like to book a Fish with Xavi trip:%0a'+
+      '• Date: '+fmtDate(selected)+'%0a'+
+      '• Session: '+session+'%0a'+
+      '• Kids: '+kids+' (ages '+ages+')%0a'+
+      '• Bait: '+(bait==='yes'?'Live shiners':'Artificial only')+'%0a'+
+      '• Me: '+contact;
+    window.location.href='sms:'+PHONE+'&body='+msg+'?body='+msg;
+  };
+</script>
+</body>
+</html>
